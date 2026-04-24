@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Language Identification System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #070808;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #51555a;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            flex: 1 1 300px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #34393b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #1c5980;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: hsl(0, 26%, 4%);
+        }
+
+        th,
+        td {
+            border: 1px solid #2980b9;
+            padding: 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #464d52;
+            color: white;
+        }
+
+        td {
+            background-color: #ecf0f1;
+        }
+
+        @media (max-width: 500px) {
+            form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            button {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Language Identification System</h1>
+
+        <form method="POST">
+            <input type="text" name="sentence" placeholder="Enter a sentence" required>
+            <button type="submit">Detect Language</button>
+        </form>
+
+        {% if prediction %}
+        <table>
+            <tr>
+                <th>Input Sentence</th>
+                <th>Language</th>
+            </tr>
+            <tr>
+                <td>{{ request.form.sentence }}</td>
+                <td>{{ prediction }}</td>
+            </tr>
+        </table>
+        {% endif %}
+    </div>
+</body>
+
+</html>
